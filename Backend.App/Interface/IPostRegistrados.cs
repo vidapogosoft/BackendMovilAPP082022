@@ -10,5 +10,7 @@ namespace Backend.App.Interface
     public interface IPostRegistrados
     {
         void PostRegistrado(Registrado item);
+        void DeleteRegistradoObject(Registrado item);
+        void DeleteRegistradoParam(int IdRegistrado);
     }
 }

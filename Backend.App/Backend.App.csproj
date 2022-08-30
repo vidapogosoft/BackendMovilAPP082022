@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Database\dll\" />
-    <Folder Include="Models\DTO\" />
   </ItemGroup>
 
   <ItemGroup>

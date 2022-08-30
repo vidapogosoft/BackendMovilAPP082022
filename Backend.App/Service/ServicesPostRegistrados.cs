@@ -21,5 +21,15 @@ namespace Backend.App.Service
             data.PostRegistrado(item);
         }
 
+        public void DeleteRegistradoObject(Registrado item)
+        {
+            data.DeleteRegistradoObject(item);
+        }
+
+        public void DeleteRegistradoParam(int IdRegistrado)
+        {
+            data.DeleteRegistradoParam(IdRegistrado);
+        }
+
     }
 }
