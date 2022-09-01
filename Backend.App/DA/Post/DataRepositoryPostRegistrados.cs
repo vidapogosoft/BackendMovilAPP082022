@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Model.APP.Models.Database;
+using Model.APP.Models.DTO;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.App.DA.Post
 {
@@ -83,6 +86,16 @@ namespace Backend.App.DA.Post
 
                 }
 
+            }
+        }
+
+        public List<DtoResultTran> PostSPRegistrado(string Identificacion,
+               string Nombres, string Apellidos)
+        {
+            using (var ctx = new dbappContext())
+            {
+                return ctx.ResultTran.FromSqlRaw("InsRegistrado {0},{1},{2}"
+                    , Identificacion, Nombres, Apellidos).ToList();
             }
         }
     }

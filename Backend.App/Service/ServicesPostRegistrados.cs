@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Backend.App.Interface;
 using Backend.App.DA.Post;
 using Model.APP.Models.Database;
+using Model.APP.Models.DTO;
 
 namespace Backend.App.Service
 {
@@ -20,6 +21,25 @@ namespace Backend.App.Service
 
             data.PostRegistrado(item);
         }
+
+        public IEnumerable<DtoResultTran> PostSPRegistrado(string Identificacion,
+               string Nombres, string Apellidos)
+        {
+            return data.PostSPRegistrado(Identificacion, Nombres, Apellidos);
+        }
+
+        public void UpdateRegistradoObject(Registrado item)
+        {
+            data.UpdateRegistradoObject(item);
+        }
+
+        public void UpdateRegistradoParam(int IdRegistrado, string Identificacion,
+               string Nombres, string Apellidos)
+        {
+            data.UpdateRegistradoParam(IdRegistrado, Identificacion,
+                Nombres, Apellidos);
+        }
+
 
         public void DeleteRegistradoObject(Registrado item)
         {

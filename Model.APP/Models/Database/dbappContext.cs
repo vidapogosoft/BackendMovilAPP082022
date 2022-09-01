@@ -20,6 +20,12 @@ namespace Model.APP.Models.Database
         public virtual DbSet<Direccione> Direcciones { get; set; }
         public virtual DbSet<Registrado> Registrados { get; set; }
 
+        //Colocar siempre para el mapping de los procedures
+        //ini
+        public virtual DbSet<DTO.DtoRegistradoDirecciones> Result { get; set; }
+        public virtual DbSet<DTO.DtoResultTran> ResultTran { get; set; }
+        //fin
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

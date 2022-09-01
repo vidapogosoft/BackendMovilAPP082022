@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Backend.App.Interface;
 using Backend.App.DA.Get;
 using Model.APP.Models.Database;
+using Model.APP.Models.DTO;
 using Backend.App.Models.DTO;
 
 namespace Backend.App.Service
@@ -17,6 +18,16 @@ namespace Backend.App.Service
         public IEnumerable<Registrado> GetregistradoAll
         {
             get { return data.GetregistradoAll(); }
+        }
+
+        public IEnumerable<DtoRegistradoDirecciones> GetSPRegistradoDirecciones
+        {
+            get { return data.GetSPRegistradoDirecciones(); }
+        }
+
+        public IEnumerable<DtoRegistradoDirecciones> GetSPRegistradoDireccion(string Identificacion)
+        {
+            return data.GetSPRegistradoDireccion(Identificacion);
         }
 
         public IEnumerable<DTORegistrado> GetDTORegistradoAll

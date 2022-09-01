@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Model.APP.Models.Database;
+using Model.APP.Models.DTO;
 using Backend.App.Models.DTO;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.App.DA.Get
 {
@@ -58,7 +61,23 @@ namespace Backend.App.DA.Get
                 return x;
             }
 
-          }
+        }
+
+        public List<DtoRegistradoDirecciones> GetSPRegistradoDirecciones()
+        {
+            using (var ctx = new dbappContext())
+            {
+                return ctx.Result.FromSqlRaw("ConRegistradoDirecciones").ToList();
+            }
+        }
+
+        public List<DtoRegistradoDirecciones> GetSPRegistradoDireccion(string Identificacion)
+        {
+            using (var ctx = new dbappContext())
+            {
+                return ctx.Result.FromSqlRaw("ConRegistradoDireccion {0}", Identificacion).ToList();
+            }
+        }
 
     }
 }

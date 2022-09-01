@@ -38,10 +38,17 @@ namespace Backend.App.Controllers
 
 
         [HttpGet]
-        [Route("id/{idregistrado}")]
-        public IActionResult GetRegistradoById(int idregistrado)
+        [Route("sp")]
+        public IActionResult GetSPRegistradoDirecciones()
         {
-            return Ok(_getRegister.GetregistradoAll);
+            return Ok(_getRegister.GetSPRegistradoDirecciones);
+        }
+
+        [HttpGet]
+        [Route("dni/{identificacion}")]
+        public IActionResult GetSPRegistradoDireccion(string identificacion)
+        {
+            return Ok(_getRegister.GetSPRegistradoDireccion(identificacion));
         }
 
         [HttpGet]
@@ -51,13 +58,6 @@ namespace Backend.App.Controllers
             return Ok(_getRegister.GetRegistradoObjectById(idregistrado));
         }
 
-
-        [HttpGet]
-        [Route("dni/{identificacion}")]
-        public IActionResult GetRegistradoByIdentificacion(string identificacion)
-        {
-            return Ok(_getRegister.GetregistradoAll);
-        }
         
         [HttpGet]
         [Route("object2/{identificacion}")]
@@ -108,6 +108,60 @@ namespace Backend.App.Controllers
             }
 
             return Ok(item);
+
+        }
+
+        [HttpPost]
+        [Route("post/{identificacion}/{nombres}/{apellidos}")]
+        public IActionResult PostSPRegistrado(string identificacion, string nombres, string apellidos)
+        {
+            return Ok(_postRegister.PostSPRegistrado(identificacion, nombres, apellidos));
+        }
+
+        [HttpPut]
+        [Route("UpdateObject")]
+        public IActionResult UpdateRegistradoObject([FromBody] Registrado item)
+        {
+            try
+            {
+                if (item == null || !ModelState.IsValid)
+                {
+                    return BadRequest("Error: Envio de datos");
+                }
+
+                //continuo con el update de datos
+
+                _postRegister.UpdateRegistradoObject(item);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error:" + ex.Message);
+            }
+
+            return Ok(item);
+
+        }
+
+        [HttpPut]
+        [Route("UpdateParam/{IdRegistrado}/{Identificacion}/{Nombres}/{Apellidos}")]
+        public IActionResult UpdateRegistradoParam(int IdRegistrado, string Identificacion,
+                string Nombres, string Apellidos)
+        {
+            try
+            {
+                //continuo con el update de datos
+
+                _postRegister.UpdateRegistradoParam(IdRegistrado, Identificacion,
+                 Nombres, Apellidos);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error:" + ex.Message);
+            }
+
+            return NoContent();
 
         }
 
