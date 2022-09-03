@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 using Backend.App.Interface;
 using Model.APP.Models.Database;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.App.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistradosController : ControllerBase
@@ -29,6 +31,7 @@ namespace Backend.App.Controllers
             return Ok(_getRegister.GetregistradoAll);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("dto")]
         public IActionResult GetDTORegistradoAll()

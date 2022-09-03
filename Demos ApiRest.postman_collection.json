@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "c7fce5d5-35cf-40cc-8a93-7ab756f52a66",
+		"name": "Demos ApiRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5539139"
+	},
+	"item": [
+		{
+			"name": "http://localhost:11585/api/Registrados",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRlbW8iLCJyb2xlIjoidXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2NvdW50cnkiOiJFQyIsIm5iZiI6MTY2MjE2ODk0NCwiZXhwIjoxNjYyMTcyNDUxLCJpYXQiOjE2NjIxNjg5NDR9.kGZ7nFo6tPR6pKXwXYsk2ITOaBZHBG-pq4nKzXxVKO0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/sp",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRlbW8iLCJyb2xlIjoidXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2NvdW50cnkiOiJFQyIsIm5iZiI6MTY2MjE2ODk0NCwiZXhwIjoxNjYyMTcyNDUxLCJpYXQiOjE2NjIxNjg5NDR9.kGZ7nFo6tPR6pKXwXYsk2ITOaBZHBG-pq4nKzXxVKO0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/sp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"sp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/dto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/dto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"dto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRlbW8iLCJyb2xlIjoidXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2NvdW50cnkiOiJFQyIsIm5iZiI6MTY2MjE2ODk0NCwiZXhwIjoxNjYyMTcyNDUxLCJpYXQiOjE2NjIxNjg5NDR9.kGZ7nFo6tPR6pKXwXYsk2ITOaBZHBG-pq4nKzXxVKO0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"identificacion\": \"0919172551\",\r\n        \"nombres\": \"VPR- 2 JWT\",\r\n        \"apellidos\": \"backend movil - 34\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/DeleteObject",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idRegistrado\": 12,\r\n    \"identificacion\": \"0924258130\",\r\n    \"nombres\": \"Victor - MVC\",\r\n    \"apellidos\": \"Portugal\",\r\n    \"nombresCompletos\": \"Victor - MVC Portugal\",\r\n    \"fechaRegistro\": \"2022-08-29T19:19:41.53\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/DeleteObject",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"DeleteObject"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/DeleteParam/11",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/DeleteParam/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"DeleteParam",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/UpdateObject",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"idRegistrado\": 13,\r\n\"identificacion\": \"0919172551\",\r\n\"nombres\": \"Backend Movil\",\r\n\"apellidos\": \"Net 5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/UpdateObject",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"UpdateObject"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/UpdateParam/17/0919172551/VPR/Portugal",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/UpdateParam/17/0919172551/VPR/Portugal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"UpdateParam",
+						"17",
+						"0919172551",
+						"VPR",
+						"Portugal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Registrados/post/0919172551001/VPR BAckend/Portugal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:11585/api/Registrados/post/0919172551001/VPR BAckend/Portugal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Registrados",
+						"post",
+						"0919172551001",
+						"VPR BAckend",
+						"Portugal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:11585/api/Token/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"demo\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11585/api/Token/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11585",
+					"path": [
+						"api",
+						"Token",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
