@@ -16,6 +16,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+//using de SWAGGER
+using Microsoft.OpenApi.Models;
+
 namespace Backend.App
 {
     public class Startup
@@ -60,6 +63,56 @@ namespace Backend.App
               );
 
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "API Auth Demo - Curso de Sipecom S-A",
+                    Description = "A simple demo with JWT Auth APIs and Basic Auth APIs",
+                    Contact = new OpenApiContact
+                    {
+                        Name = @"GitHub Repository",
+                        Email = "vidapogosoft@gmail.com",
+                        Url = new Uri("https://github.com/vidapogosoft")
+                    }
+                });
+
+                // add JWT Authentication
+                var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name = "JWT Authentication",
+                    Description = "Enter JWT Bearer token **_only_**",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer", // must be lower case
+                    BearerFormat = "JWT",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };
+                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {securityScheme, new string[] { }}
+                });
+
+                // add Basic Authentication
+                var basicSecurityScheme = new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    Reference = new OpenApiReference { Id = "BasicAuth", Type = ReferenceType.SecurityScheme }
+                };
+                c.AddSecurityDefinition(basicSecurityScheme.Reference.Id, basicSecurityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {basicSecurityScheme, new string[] { }}
+                });
+            });
+
             services.AddAuthorization();
 
             //Servicio verificador y creador de tokens JWT
@@ -78,6 +131,17 @@ namespace Backend.App
             }
 
             app.UseRouting();
+
+            ///uso del swagger -- ini
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+
+                  c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiBetaDocumentacion")
+
+               );
+            ///uso del swagger -- fin
+
 
             //llamo al middleware de la autenticacion
             app.UseAuthentication();

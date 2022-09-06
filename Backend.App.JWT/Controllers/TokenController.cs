@@ -20,6 +20,12 @@ namespace Backend.App.Controllers
             _authService = auth;
         }
 
+        /// <summary>
+        /// metodo de autenticacion - genera token si usuario es correcto
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthInfo user)

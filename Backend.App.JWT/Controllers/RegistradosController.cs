@@ -25,6 +25,10 @@ namespace Backend.App.Controllers
             _postRegister = postRegister;
         }
 
+        /// <summary>
+        /// Metodo Get Total
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetregistradoAll()
         {
@@ -61,7 +65,11 @@ namespace Backend.App.Controllers
             return Ok(_getRegister.GetRegistradoObjectById(idregistrado));
         }
 
-        
+        /// <summary>
+        /// Metodo Get con parametro de identificacion
+        /// </summary>
+        /// <param name="identificacion"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("object2/{identificacion}")]
         public IActionResult GetRegistradoObjetcByIdentificacion(string identificacion)
@@ -76,6 +84,12 @@ namespace Backend.App.Controllers
             return Ok(_getRegister.GetregistradoAll);
         }
 
+        /// <summary>
+        /// Metodo get parametrizado
+        /// </summary>
+        /// <param name="idregistrado"></param>
+        /// <param name="identificacion"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("v2/{idregistrado}/{identificacion}")]
         public IActionResult GetRegistradoByIdIdentificacion2(int idregistrado, string identificacion)
@@ -114,6 +128,44 @@ namespace Backend.App.Controllers
 
         }
 
+        /// <summary>
+        /// Metodo post con Objeto
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("PostObject")]
+        public IActionResult PostRegistradoObject([FromBody] Registrado item)
+        {
+            try
+            {
+                if (item == null || !ModelState.IsValid)
+                {
+                    return BadRequest("Error: Envio de datos");
+                }
+
+                //continuo con el registro de datos
+
+                _postRegister.PostRegistrado(item);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error:" + ex.Message);
+            }
+
+            return Ok(item);
+
+        }
+
+        /// <summary>
+        /// Metodo post con parametros
+        /// </summary>
+        /// <param name="identificacion"></param>
+        /// <param name="nombres"></param>
+        /// <param name="apellidos"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("post/{identificacion}/{nombres}/{apellidos}")]
         public IActionResult PostSPRegistrado(string identificacion, string nombres, string apellidos)
