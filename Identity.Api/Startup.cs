@@ -18,6 +18,9 @@ using Microsoft.EntityFrameworkCore;
 using Identity.Persistence.Database;
 using Identity.Model;
 
+using MediatR;
+using System.Reflection;
+
 namespace Identity.Api
 {
     public class Startup
@@ -61,9 +64,13 @@ namespace Identity.Api
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 10;
                 options.Password.RequiredUniqueChars = 1;
             });
+
+
+            //Event handlers
+            services.AddMediatR(Assembly.Load("Identity.Services"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
