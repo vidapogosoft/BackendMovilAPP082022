@@ -30,8 +30,8 @@ namespace Backend.App
 
             services.AddControllers();
 
-            services.AddScoped<IGetRegistrados, ServicesGetRegistrados>();
-            services.AddScoped<IPostRegistrados, ServicesPostRegistrados>();
+            services.AddSingleton<IGetRegistrados, ServicesGetRegistrados>();
+            services.AddSingleton<IPostRegistrados, ServicesPostRegistrados>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
