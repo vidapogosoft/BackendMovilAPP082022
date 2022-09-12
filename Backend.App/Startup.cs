@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 using Backend.App.Interface;
 using Backend.App.Service;
+using Common.Logging;
 
 namespace Backend.App
 {
@@ -35,11 +36,18 @@ namespace Backend.App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+             , ILoggerFactory loggerFactory
+            )
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                loggerFactory.AddSyslog(
+                    Configuration.GetValue<string>("Papertrail:host"),
+                    Configuration.GetValue<int>("Papertrail:port"));
+
             }
 
             app.UseRouting();

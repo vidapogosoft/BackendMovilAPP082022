@@ -8,17 +8,24 @@ using System.Threading.Tasks;
 using Backend.App.Interface;
 using Model.APP.Models.Database;
 
+using Microsoft.Extensions.Logging;
+
 namespace Backend.App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class RegistradosController : ControllerBase
     {
+        private readonly ILogger<RegistradosController> _logger;
         private readonly IGetRegistrados _getRegister;
         private readonly IPostRegistrados _postRegister;
 
-        public RegistradosController(IGetRegistrados getRegister, IPostRegistrados postRegister)
+        public RegistradosController(IGetRegistrados getRegister, IPostRegistrados postRegister
+            
+            , ILogger<RegistradosController> logger
+            )
         {
+            _logger = logger;
             _getRegister = getRegister;
             _postRegister = postRegister;
         }
@@ -26,6 +33,7 @@ namespace Backend.App.Controllers
         [HttpGet]
         public IActionResult GetregistradoAll()
         {
+            _logger.LogInformation("-----> Consulta Realizada total de registros");
             return Ok(_getRegister.GetregistradoAll);
         }
 
@@ -48,6 +56,7 @@ namespace Backend.App.Controllers
         [Route("dni/{identificacion}")]
         public IActionResult GetSPRegistradoDireccion(string identificacion)
         {
+            _logger.LogInformation("-----> Consulta Realizada del dni:" + identificacion);
             return Ok(_getRegister.GetSPRegistradoDireccion(identificacion));
         }
 
@@ -101,10 +110,14 @@ namespace Backend.App.Controllers
 
                 _postRegister.PostRegistrado(item);
 
+                _logger.LogInformation("-----> Registro de datos reealizado del dni:" + item.Identificacion);
+
             }
             catch (Exception ex)
             {
                 return BadRequest("Error:" + ex.Message);
+
+                _logger.LogError("Error presentado:" + ex.Message);
             }
 
             return Ok(item);
